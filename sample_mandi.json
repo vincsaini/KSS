@@ -1,0 +1,26 @@
+[{
+	"_id" : ObjectId("5b09036b8d3dce124ebdaebc"),
+	"arrival_date" : "26/05/2018",
+	"district" : "Gandhinagar",
+	"commodity" : "Bhindi(Ladies Finger)",
+	"variety" : "Other",
+	"timestamp" : "1527312724",
+	"state" : "Gujarat",
+	"min_price" : "2000",
+	"modal_price" : "2000",
+	"max_price" : "2000",
+	"market" : "Mansa(Manas Veg Yard)"
+},
+{
+	"_id" : ObjectId("5b09036b8d3dce124ebdaebd"),
+	"arrival_date" : "26/05/2018",
+	"district" : "Gandhinagar",
+	"commodity" : "Bottle gourd",
+	"variety" : "Other",
+	"timestamp" : "1527312724",
+	"state" : "Gujarat",
+	"min_price" : "300",
+	"modal_price" : "350",
+	"max_price" : "400",
+	"market" : "Mansa(Manas Veg Yard)"
+}]
