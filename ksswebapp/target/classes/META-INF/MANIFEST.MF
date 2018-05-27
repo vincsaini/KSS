@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: ksswebapp
+Implementation-Version: 0.1.0
+Built-By: vineet
+Implementation-Vendor-Id: org.kss
+Build-Jdk: 1.8.0_161
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/ksswebapp
+Created-By: Maven Integration for Eclipse
+
