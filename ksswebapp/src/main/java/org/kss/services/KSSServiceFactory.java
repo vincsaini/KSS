@@ -1,7 +1,7 @@
 package org.kss.services;
 
 public class KSSServiceFactory {
-	public KSSService getKSSService(String query) {
+	public static KSSService getKSSService(String query) {
 		KSSService kssService = null;
 		if(query.contains("prices")) {
 			kssService = new KSSMandiService();
