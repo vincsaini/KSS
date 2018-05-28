@@ -7,6 +7,12 @@ from nltk.tag.stanford import StanfordNERTagger
 import pymongo
 from pymongo import MongoClient
 
+from flask import Flask
+import json
+
+# This will be exposed as entity resolver service
+app = Flask(__name__)
+
 # database connection detail
 client = MongoClient('localhost', 27017)
 db = client['mandi']
@@ -57,10 +63,10 @@ example = "price of Carrot in Surat"
 entities  = entityresolver(example)
 print(entities)
 
+@app.route("/kssnlp/<query>")
+def kssnlp(query):
+    return json.dumps(entityresolver(query))
 
-#tagger = StanfordNERTagger('/Users/vineet/Documents/BITS/4sem/KSS_NLP/english.all.3class.distsim.crf.ser.gz',
- #              '/Users/vineet/Documents/BITS/4sem/KSS_NLP/stanford-ner.jar',
-  #             encoding='utf-8')
-#classified_text = tagger.tag(clean_tokens)
-#print(classified_text)
-#identify the entities from the clean tokens
+
+if __name__ == '__main__':
+    app.run(debug=True)
