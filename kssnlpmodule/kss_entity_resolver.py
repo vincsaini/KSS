@@ -8,6 +8,7 @@ import pymongo
 from pymongo import MongoClient
 
 from flask import Flask
+from flask import Response
 import json
 
 # This will be exposed as entity resolver service
@@ -65,7 +66,7 @@ print(entities)
 
 @app.route("/kssnlp/<query>")
 def kssnlp(query):
-    return json.dumps(entityresolver(query))
+	return Response(json.dumps(entityresolver(query)),mimetype='application/json')
 
 
 if __name__ == '__main__':
