@@ -48,13 +48,13 @@ def entityresolver(example):
 		#if word exist in the location then add it
 		loc_docs = mandi_coll.find({"$text": { "$search": ""+word }})
 		for doc in loc_docs:
-			entities['location'] = [word]
+			entities['location'].append(word)
 			break;
 		
 		#if word exist in the commodity then add it
 		com_docs = mandi_coll.find({"commodity": word})
 		for doc in com_docs:
-			entities['produce'] = [word]
+			entities['produce'].append(word)
 			break;
 	return entities
 
