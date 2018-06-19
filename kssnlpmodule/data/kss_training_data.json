@@ -1,0 +1,86 @@
+﻿{
+  "rasa_nlu_data": {
+    "common_examples": [
+      {
+        "text": "price of carrot in nautnava",
+        "intent": "commodity_price",
+        "entities": [
+          {
+            "start": 9,
+            "end": 15,
+            "value": "carrot",
+            "entity": "commodity"
+          },
+          {
+            "start": 19,
+            "end": 27,
+            "value": "nautnava",
+            "entity": "market"
+          }
+        ]
+      },
+      {
+        "text": "price of banana - green in gadaura",
+        "intent": "commodity_price",
+        "entities": [
+          {
+            "start": 9,
+            "end": 23,
+            "value": "banana - green",
+            "entity": "commodity"
+          },
+          {
+            "start": 27,
+            "end": 34,
+            "value": "nautnava",
+            "entity": "market"
+          }
+        ]
+      },
+      {
+        "text": "tomato price in anandnagar",
+        "intent": "commodity_price",
+        "entities": [
+          {
+            "start": 0,
+            "end": 6,
+            "value": "tomato",
+            "entity": "commodity"
+          },
+          {
+            "start": 16,
+            "end": 26,
+            "value": "anandnagar",
+            "entity": "market"
+          }
+        ]
+      },
+      {
+        "text": "weather in gandhinagar",
+        "intent": "weather",
+        "entities": [
+          {
+            "start": 11,
+            "end": 22,
+            "value": "gandhinagar",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "roorkee weather",
+        "intent": "weather",
+        "entities": [
+          {
+            "start": 0,
+            "end": 7,
+            "value": "gandhinagar",
+            "entity": "location"
+          }
+        ]
+      }
+    ],
+    "regex_features": [],
+    "entity_synonyms": []
+  }
+}
