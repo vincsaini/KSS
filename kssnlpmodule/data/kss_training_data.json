@@ -78,6 +78,66 @@
             "entity": "location"
           }
         ]
+      },
+      {
+        "text": "best variety of bitter guard",
+        "intent": "kss_query_variety",
+        "entities": [
+          {
+            "start": 16,
+            "end": 28,
+            "value": "bitter guard",
+            "entity": "crop"
+          }
+        ]
+      },
+      {
+        "text": "variety name of cauliflower vegetables",
+        "intent": "kss_query_variety",
+        "entities": [
+          {
+            "start": 16,
+            "end": 27,
+            "value": "cauliflower",
+            "entity": "crop"
+          }
+        ]
+      },
+      {
+        "text": "insect problem in brinjal",
+        "intent": "kss_query_crop_problem",
+        "entities": [
+          {
+            "start": 18,
+            "end": 25,
+            "value": "brinjal",
+            "entity": "crop"
+          },
+          {
+            "start": 0,
+            "end": 6,
+            "value": "insect",
+            "entity": "desease"
+          }
+        ]
+      },
+      {
+        "text": "paddy weed problem",
+        "intent": "kss_query_crop_problem",
+        "entities": [
+          {
+            "start": 0,
+            "end": 5,
+            "value": "paddy",
+            "entity": "crop"
+          },
+          {
+            "start": 6,
+            "end": 10,
+            "value": "weed",
+            "entity": "desease"
+          }
+        ]
       }
     ],
     "regex_features": [],
