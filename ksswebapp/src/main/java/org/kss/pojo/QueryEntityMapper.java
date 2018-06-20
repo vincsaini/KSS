@@ -1,39 +1,42 @@
 package org.kss.pojo;
 
 import java.util.ArrayList;
+import com.google.gson.Gson;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class QueryEntityMapper {
 	
-	private String query;
-	private ArrayList<String> location;
-	private ArrayList<String> produce;
+	private Intent intent;
+	private ArrayList<Intent> intentRankings;
+	private ArrayList<KSSEntity> entities;
 	
-	public ArrayList<String> getProduce() {
-		return produce;
+	public ArrayList<KSSEntity> getEntities() {
+		return entities;
 	}
-	public void setProduce(ArrayList<String> produce) {
-		this.produce = produce;
+	public void setEntities(ArrayList<KSSEntity> entities) {
+		this.entities = entities;
 	}
-	public String getQuery() {
-		return query;
+	public Intent getIntent() {
+		return intent;
 	}
-	public void setQuery(String query) {
-		this.query = query;
+	public void setIntent(Intent intent) {
+		this.intent = intent;
 	}
-	public ArrayList<String> getLocation() {
-		return location;
+	
+	
+
+	public ArrayList<Intent> getIntentRankings() {
+		return intentRankings;
 	}
-	public void setLocation(ArrayList<String> location) {
-		this.location = location;
+	public void setIntentRankings(ArrayList<Intent> intentRankings) {
+		this.intentRankings = intentRankings;
 	}
+	
 	@Override
     public String toString() {
-        return "Entities{" +
-                "query='" + query + '\'' +
-                ", produce=" + produce.toString() + ", location=" + location.toString() +
-                '}';
+		Gson gson = new Gson();
+        return gson.toJson(this);
     }
 }

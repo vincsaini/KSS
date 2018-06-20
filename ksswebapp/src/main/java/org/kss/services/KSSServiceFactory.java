@@ -1,15 +1,31 @@
 package org.kss.services;
 
+import org.kss.util.KSSConstants;
+
+/**
+ * Factory to return the service based on the intent
+ * @author Vineet
+ *
+ */
 public class KSSServiceFactory {
-	public static KSSService getKSSService(String query) {
+	/**
+	 * 
+	 * @param intent
+	 * @return
+	 */
+	public static KSSService getKSSService(String intent) {
 		KSSService kssService = null;
-		if(query.contains("prices")) {
-			kssService = new KSSMandiService();
-		}else if(query.contains("weather")) {
-			kssService = new KSSWeatherService();
-		}else {
-			kssService = new KSSQueryService();
-		}	
+		switch(intent) {
+			case KSSConstants.COM_PRICE:
+				kssService = new KSSMandiService();
+				break;
+			case KSSConstants.WEATHER_INFO:
+				kssService = new KSSWeatherService();
+				break;
+			case KSSConstants.CROP_PROB:
+				kssService = new KSSQueryService();
+				break;
+		}
 		return kssService;
 	}
 }
