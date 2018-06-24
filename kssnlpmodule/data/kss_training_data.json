@@ -138,6 +138,42 @@
             "entity": "desease"
           }
         ]
+      },
+      {
+        "text": "price of banana in talalagir",
+        "intent": "commodity_price",
+        "entities": [
+          {
+            "start": 9,
+            "end": 15,
+            "value": "banana",
+            "entity": "commodity"
+          },
+          {
+            "start": 19,
+            "end": 28,
+            "value": "talalagir",
+            "entity": "market"
+          }
+        ]
+      },
+      {
+        "text": "Guar price in Mansa",
+        "intent": "commodity_price",
+        "entities": [
+          {
+            "start": 0,
+            "end": 4,
+            "value": "Guar",
+            "entity": "commodity"
+          },
+          {
+            "start": 14,
+            "end": 19,
+            "value": "Mansa",
+            "entity": "market"
+          }
+        ]
       }
     ],
     "regex_features": [],
