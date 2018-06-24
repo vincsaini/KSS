@@ -8,6 +8,8 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.css">
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.js"></script>
 
 <!------ Include the above in your HEAD tag ---------->
 <style>
@@ -85,7 +87,8 @@
 
 <script type="text/javascript">
 
-	var data = [{
+	var sample_data = []; 
+		/*[{
 	"_id" : "5b09036b8d3dce124ebdaebc",
 	"arrival_date" : "26/05/2018",
 	"district" : "Gandhinagar",
@@ -110,7 +113,7 @@
 	"modal_price" : "350",
 	"max_price" : "400",
 	"market" : "Mansa(Manas Veg Yard)"
-}];
+}];*/
     $(function () {
 		function closeSearch() {
             var $form = $('.navbar-collapse form[role="search"].active')
@@ -133,7 +136,23 @@
 			var $form = $(this).closest('form'),
 				$input = $form.find('input');
 
-			$('#showSearchTerm').text($input.val()+JSON.stringify(data, undefined, 2));
+				// --------------- Your ajax code will go here
+
+				var ajax_url = "http://localhost:8080/querykss?query="+$input.val();
+				$.ajax({url: ajax_url, success: function(result){
+        				//$("#div1").html(result);
+        				//alert(result)
+					var results_data = JSON.parse(result);
+					sample_data = results_data['queryResults'];
+					//alert(sample_data)
+					$("#table_container").css("display","block");
+					$(function () {
+					    $('#table').bootstrapTable({
+						data: sample_data
+					    });
+					});
+					$('#showSearchTerm').text($input.val()+JSON.stringify(sample_data, undefined, 2));
+    				}});
             closeSearch()
 		});
     });
@@ -206,9 +225,27 @@
 
  <div class="container">
    	<div class="row" style="padding:30px;">
-    		<div class="alert alert-info">
-                <strong>Instructions</strong> Query format
-            </div>
+	<div id="table_container" style="display:none;">
+		 <table id="table" data-height="460">
+        <thead>
+            <tr>
+                <th data-field="arrival_date">Arrival Date</th>
+                <th data-field="district">District</th>
+                <th data-field="commodity">Commodity</th>
+		<th data-field="variety">Variety</th>
+                <th data-field="timestamp">TimeStamp</th>
+                <th data-field="state">State</th>
+		<th data-field="min_price">Min Price</th>
+                <th data-field="modal_price">Modal Price</th>
+                <th data-field="max_price">Max Price</th>
+		<th data-field="market">Market</th>
+            </tr>
+        </thead>
+    </table>
+	<br>
+	<br>
+	</div>
+
 		<div class="col" >
             <div class="alert alert-success">
                  <span id="showSearchTerm">Nothing to show please enter your query in search bar!</span>
