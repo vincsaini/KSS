@@ -54,7 +54,7 @@ public class KSSMandiService implements KSSService{
 		//prepare the list of commodity
 		List<String> commodity = new ArrayList<String>();
 		//TODO this is default till I resolve the commodity recognition issue in NLP
-		commodity.add("Tomato");
+		//commodity.add("Tomato");
 		List<String> market = new ArrayList<String>();
 		for(KSSEntity entity:query.getEntities()) {
 			if(KSSConstants.COMMODITY.equals(entity.getEntity())) {
