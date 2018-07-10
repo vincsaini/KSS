@@ -1,0 +1,280 @@
+<html>
+<head>
+<title>KSS</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.css">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.css">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.js"></script>
+
+<!------ Include the above in your HEAD tag ---------->
+<style>
+th {
+	background-color: #1e272e;
+	color: #dfe6e9;
+	border: 1px solid black;
+}
+
+body {
+	padding: 60px 0px;
+}
+
+.navbar-collapse {
+	position: relative;
+	padding-top: 30px !important;
+	max-height: 270px;
+}
+
+.navbar-collapse form[role="search"] {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	width: 100%;
+	padding: 0px;
+	margin: 0px;
+	z-index: 0;
+}
+
+.navbar-collapse form[role="search"] button, .navbar-collapse form[role="search"] input
+	{
+	padding: 8px 12px;
+	border-radius: 0px;
+	border-width: 0px;
+	color: white;
+	background-color: #636e72;
+	border-color: rgb(231, 231, 231);
+	box-shadow: none;
+	outline: none;
+}
+
+.navbar-collapse form[role="search"] input {
+	padding: 16px 12px;
+	font-size: 14pt;
+	font-style: italic;
+	color: white;
+	box-shadow: none;
+}
+
+@media ( min-width : 768px) {
+	.navbar-collapse {
+		padding-top: 0px !important;
+		padding-right: 38px !important;
+	}
+	.navbar-collapse form[role="search"] {
+		width: 38px;
+	}
+	.navbar-collapse form[role="search"] button, .navbar-collapse form[role="search"] input
+		{
+		padding: 15px 12px;
+	}
+	.navbar-collapse form[role="search"] input {
+		padding: 25px 12px;
+		font-size: 18pt;
+		opacity: 0;
+		display: none;
+	}
+	.navbar-collapse form[role="search"].active {
+		width: 100%;
+	}
+	.navbar-collapse form[role="search"].active button, .navbar-collapse form[role="search"].active input
+		{
+		display: table-cell;
+		opacity: 1;
+	}
+	.navbar-collapse form[role="search"].active input {
+		width: 100%;
+		text-align: right;
+	}
+	.navbar-collapse form[role="search"].active button[type="submit"] {
+		background-color: #636e72;
+	}
+}
+
+.color_white {
+	color: #b2bec3 !important;
+}
+</style>
+
+<script type="text/javascript">
+
+	var sample_data;
+
+$(document).ready(function(){
+	$("#butt").click(function(){
+		alert('sdfsdds');
+	});
+});
+
+		$(document).ready(function(){$("#search_k").click(function(){
+
+			
+			var value = $("#search_content").val();
+								$("#table_container").css("display","none");
+					$('#table').bootstrapTable("destroy");
+					$('#table').bootstrapTable({
+						data: sample_data
+					});
+					$("#table_container").css("display","block");
+			alert(value);
+		});});
+    $(function () {
+		function closeSearch() {
+            var $form = $('.navbar-collapse form[role="search"].active')
+    		$form.find('input').val('');
+			$form.removeClass('active');
+		}
+
+		// Show Search if form is not active // event.preventDefault() is important, this prevents the form from submitting
+		$(document).on('click', '.navbar-collapse form[role="search"]:not(.active) button[type="submit"]', function(event) {
+			event.preventDefault();
+			var $form = $(this).closest('form'),
+				$input = $form.find('input');
+			$form.addClass('active');
+			$input.focus();
+		});
+		// ONLY FOR DEMO // Please use $('form').submit(function(event)) to track from submission
+		// if your form is ajax remember to call `closeSearch()` to close the search container
+
+
+		$(document).on('click', '.navbar-collapse form[role="search"].active button[type="submit"]', function(event) {
+			event.preventDefault();
+			var $form = $(this).closest('form'),
+				$input = $form.find('input');
+
+				// --------------- Your ajax code will go here
+
+				var ajax_url = "http://localhost:8080/querykss?query="+$input.val();
+				//--$.ajax({url: ajax_url, success: function(result){
+        				//alert(result)
+					//--var results_data = JSON.parse(result);
+					//--sample_data = results_data['queryResults'];
+					//alert(sample_data)
+					
+					$("#table_container").css("display","none");
+					$('#table').bootstrapTable("destroy");
+					$('#table').bootstrapTable({
+						data: sample_data
+					});
+					$("#table_container").css("display","block");
+					
+					
+    				//--}});
+    			//$('#showSearchTerm').text($input.val()+JSON.stringify(sample_data, undefined, 2));
+            closeSearch()
+		});
+    });
+</script>
+<head>
+<body onload="prettyPrint()" bgcolor="white">
+
+	<nav class="navbar navbar-default navbar-fixed-top"
+		style="background-color: #2d3436;" role="navigation">
+		<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" style="color: #dfe6e9;" href="#">Kisaan
+					Samayasa Smadhan</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav" style="background-color: #2d3436;">
+					<li class="color_white"><a href="#" class="color_white">Link</a></li>
+					<li class="color_white"><a href="#" class="color_white">Link</a></li>
+					<li class="dropdown"><a href="#"
+						class="dropdown-toggle color_white" data-toggle="dropdown">More
+							<b class="caret"></b>
+					</a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Action</a></li>
+							<li><a href="#">Another action</a></li>
+							<li><a href="#">Something else here</a></li>
+							<li class="divider"></li>
+							<li><a href="#">Separated link</a></li>
+							<li class="divider"></li>
+							<li><a href="#">One more separated link</a></li>
+						</ul></li>
+					<li style="padding-top: 10px; padding-left: 5px;"><input
+						type="text" placeholder="Search" id="search_content"></input>
+						<button id="search_k" class="btn btn-primary"
+							style="height: 30px;">
+							<span class="glyphicon glyphicon-search"></span> Search
+						</button></li>
+
+				</ul>
+
+
+
+
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container-fluid -->
+		<div>
+			<img style="height: 170px; width: 100%" src="./photo.jpg" />
+		</div>
+	</nav>
+
+	<div class="container">
+		<div class="row" style="padding: 175px;">
+			<div id="table_container" style="display: none;">
+				<table id="table" class="table-striped" data-height="460">
+					<thead>
+						<tr>
+							<th data-field="arrival_date">Arrival Date</th>
+							<th data-field="district">District</th>
+							<th data-field="commodity">Commodity</th>
+							<th data-field="variety">Variety</th>
+							<th data-field="timestamp">TimeStamp</th>
+							<th data-field="state">State</th>
+							<th data-field="min_price">Min Price</th>
+							<th data-field="modal_price">Modal Price</th>
+							<th data-field="max_price">Max Price</th>
+							<th data-field="market">Market</th>
+						</tr>
+					</thead>
+				</table>
+				<br> <br>
+			</div>
+
+			<div class="col" style="height: 100px;">
+				<div class="jumbotron">
+					<h1 class="display-3" style="font-size: 45px;">Kisaan Samayasa
+						Smadhan</h1>
+					<p class="lead">One stop for Farmers all queries</p>
+					<hr class="my-4">
+					<p>
+						You can find answer to queries related to following area: <br>query
+						related crop variety or problems in the crop. <br>weather
+						report of your area. <br>commodity/produce price in any
+						Market/Mandi
+					</p>
+					<p class="lead">
+						<a class="btn btn-primary btn-lg" href="./search.html"
+							role="button">Find Answers</a>
+					</p>
+				</div>
+			</div>
+		</div>
+</body>
+</html>
+
+
