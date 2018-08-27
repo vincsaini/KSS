@@ -155,15 +155,24 @@ $(document).ready(function(){
 				//--$.ajax({url: ajax_url, success: function(result){
         				//alert(result)
 		var results_data = JSON.parse(result);
-		sample_data = results_data['queryResults'];
-		//alert(sample_data)
-		$("#search_box").css("display","none");
-		$("#table_container").css("display","none");
-		$('#table').bootstrapTable("destroy");
-		$('#table').bootstrapTable({
-			data: sample_data
-		});
-		$("#table_container").css("display","block");
+        if(results_data['resultsType'] == 'commodity_price'){
+			sample_data = results_data['queryResults'];
+			//alert(sample_data)
+			$("#search_box").css("display","none");
+			$("#table_container").css("display","none");
+			$('#table').bootstrapTable("destroy");
+			$('#table').bootstrapTable({
+				data: sample_data
+			});
+			$("#table_container").css("display","block");
+        }else if(results_data['resultsType'] == 'weather'){
+        		$("#search_box").css("display","none");
+        		$("#toggle_search").css("display","block");
+        		$("#weather_container").html(results_data['weatherResult'])
+        		$("#weather_container").css("display","block");
+        		//alert(results_data['weatherResult']);
+        }
+        
 	}});
 		///}});	
 	});
@@ -313,8 +322,7 @@ $(document).ready(function(){
 				<div id="table_container" style="display: none;">
 					<button class="btn btn-sm btn-primary" id="toggle_search">Toggle
 						Search box</button>
-					<br>
-					<br>
+					<br> <br>
 					<table id="table" class="table-striped" data-height="460"
 						style="margin-top: 30px;">
 						<thead>
@@ -334,8 +342,7 @@ $(document).ready(function(){
 					</table>
 					<br> <br>
 				</div>
-
-
+				<div id="weather_container" style="display: none;"></div>
 			</div>
 
 			<!-- <div class="col-sm-5">
