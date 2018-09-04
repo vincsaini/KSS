@@ -22,6 +22,9 @@ public class KSSServiceFactory {
 			case KSSConstants.WEATHER_INFO:
 				kssService = new KSSWeatherService();
 				break;
+			case KSSConstants.CROP_VARIETY:
+				kssService = new KSSQueryService();
+				break;
 			case KSSConstants.CROP_PROB:
 				kssService = new KSSQueryService();
 				break;

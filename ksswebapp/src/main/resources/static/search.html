@@ -171,7 +171,18 @@ $(document).ready(function(){
         		$("#weather_container").html(results_data['weatherResult'])
         		$("#weather_container").css("display","block");
         		//alert(results_data['weatherResult']);
+        } else if(results_data['resultsType'] == 'kss_query_variety'){
+        		sample_data = results_data['queryResults'];
+			//alert(sample_data)
+			$("#search_box").css("display","none");
+			$("#table_container_query").css("display","none");
+			$('#table_query').bootstrapTable("destroy");
+			$('#table_query').bootstrapTable({
+				data: sample_data
+			});
+			$("#table_container_query").css("display","block"); 	
         }
+        	
         
 	}});
 		///}});	
@@ -184,6 +195,16 @@ $(document).ready(function(){
 		//var query = $("toggle_table_content").val();
 		$("#search_box").css("display","block");
 		$("#table_container").css("display","none");	
+	});
+	$("#toggle_search_weather").click(function(){
+		//var query = $("toggle_table_content").val();
+		$("#search_box").css("display","block");
+		$("#weather_container").css("display","none");	
+	});
+	$("#toggle_search_query").click(function(){
+		//var query = $("toggle_table_content").val();
+		$("#search_box").css("display","block");
+		$("#table_container_query").css("display","none");	
 	});
 });
 
@@ -342,7 +363,33 @@ $(document).ready(function(){
 					</table>
 					<br> <br>
 				</div>
-				<div id="weather_container" style="display: none;"></div>
+				<div id="table_container_query" style="display: none;">
+					<button class="btn btn-sm btn-primary" id="toggle_search_query">Toggle
+						Search box</button>
+					<br> <br>
+					<table id="table_query" class="table-striped" data-height="460"
+						style="margin-top: 30px;">
+						<thead>
+							<tr>
+								<th data-field="Category">Category</th>
+								<th data-field="CreatedOn">Date</th>
+								<th data-field="BlockName">Block Name</th>
+								<th data-field="DistrictName">District Name</th>
+								<th data-field="StateName">State Name</th>
+								<th data-field="Season">Season</th>
+								<th data-field="Crop">Crop</th>
+								<th data-field="KCCAns">Answer</th>
+								<th data-field="QueryText">Query Text</th>
+							</tr>
+						</thead>
+					</table>
+					<br> <br>
+				</div>
+				<div id="weather_container" style="display: none;">
+					<button class="btn btn-sm btn-primary" id="toggle_search_weather">Toggle
+						Search box</button>
+					<br> <br>
+				</div>
 			</div>
 
 			<!-- <div class="col-sm-5">
