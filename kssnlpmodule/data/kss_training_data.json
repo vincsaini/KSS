@@ -174,6 +174,168 @@
             "entity": "market"
           }
         ]
+      },
+      {
+        "text": "varieties of jowar",
+        "intent": "kss_query_variety",
+        "entities": [
+          {
+            "start": 13,
+            "end": 18,
+            "value": "jowar",
+            "entity": "crop"
+          }
+        ]
+      },
+      {
+        "text": "varieties of soyabean",
+        "intent": "kss_query_variety",
+        "entities": [
+          {
+            "start": 13,
+            "end": 21,
+            "value": "soyabean",
+            "entity": "crop"
+          }
+        ]
+      },
+      {
+        "text": "arhar varieties",
+        "intent": "kss_query_variety",
+        "entities": [
+          {
+            "start": 0,
+            "end": 5,
+            "value": "arhar",
+            "entity": "crop"
+          }
+        ]
+      },
+      {
+        "text": "best variety of urd",
+        "intent": "kss_query_variety",
+        "entities": [
+          {
+            "start": 16,
+            "end": 19,
+            "value": "urd",
+            "entity": "crop"
+          }
+        ]
+      },
+      {
+        "text": "good variety of cotton seed",
+        "intent": "kss_query_variety",
+        "entities": [
+          {
+            "start": 16,
+            "end": 22,
+            "value": "cotton",
+            "entity": "crop"
+          }
+        ]
+      },
+      {
+        "text": "Attack of caterpillar in Soybean",
+        "intent": "kss_query_crop_problem",
+        "entities": [
+          {
+            "start": 10,
+            "end": 21,
+            "value": "caterpillar",
+            "entity": "desease"
+          },
+          {
+            "start": 25,
+            "end": 32,
+            "value": "Soybean",
+            "entity": "crop"
+          }
+        ]
+      },
+      {
+        "text": "ATTACK OF APHIDS in Chillies",
+        "intent": "kss_query_crop_problem",
+        "entities": [
+          {
+            "start": 10,
+            "end": 16,
+            "value": "APHIDS",
+            "entity": "desease"
+          },
+          {
+            "start": 20,
+            "end": 28,
+            "value": "Chillies",
+            "entity": "crop"
+          }
+        ]
+      },
+      {
+        "text": "wilting of brinjal plants",
+        "intent": "kss_query_crop_problem",
+        "entities": [
+          {
+            "start": 0,
+            "end": 7,
+            "value": "wilting",
+            "entity": "desease"
+          },
+          {
+            "start": 11,
+            "end": 18,
+            "value": "brinjal",
+            "entity": "crop"
+          }
+        ]
+      },
+      {
+        "text": "attack of wilt on tur",
+        "intent": "kss_query_crop_problem",
+        "entities": [
+          {
+            "start": 10,
+            "end": 14,
+            "value": "wilt",
+            "entity": "desease"
+          },
+          {
+            "start": 18,
+            "end": 21,
+            "value": "tur",
+            "entity": "crop"
+          }
+        ]
+      },
+      {
+        "text": "Attack of White Fly in Moong",
+        "intent": "kss_query_crop_problem",
+        "entities": [
+          {
+            "start": 10,
+            "end": 19,
+            "value": "White Fly",
+            "entity": "desease"
+          },
+          {
+            "start": 23,
+            "end": 28,
+            "value": "Moong",
+            "entity": "crop"
+          }
+        ]
+      },
+      {
+        "text": "variety of Green Gram",
+        "intent": "kss_query_variety",
+        "entities": [
+          {
+            "start": 11,
+            "end": 21,
+            "value": "Green Gram",
+            "entity": "crop"
+          }
+        ]
       }
     ],
     "regex_features": [],
