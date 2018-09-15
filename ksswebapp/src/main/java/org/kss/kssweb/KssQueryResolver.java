@@ -1,8 +1,10 @@
 package org.kss.kssweb;
 
+import org.kss.pojo.KSSEntity;
 import org.kss.pojo.QueryEntityMapper;
 import org.kss.services.KSSService;
 import org.kss.services.KSSServiceFactory;
+import org.kss.util.KSSConstants;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,6 +27,17 @@ public class KssQueryResolver {
 			RestTemplate restTemplate = new RestTemplate();
 			QueryEntityMapper queryEntityMapper = (QueryEntityMapper) restTemplate.getForObject(uri,
 					QueryEntityMapper.class);
+			
+			//function to correct the entities
+			for (KSSEntity entity : queryEntityMapper.getEntities()) {
+				if (KSSConstants.COMMODITY.equals(entity.getEntity())) {
+					String spellCheck = "http://localhost:5002/kssspell/" + entity.getValue();
+					RestTemplate restTemplate1 = new RestTemplate();
+					String corrected = (String) restTemplate1.getForObject(spellCheck,String.class);
+					entity.setValue(corrected.substring(1,corrected.length()-1));
+					System.out.println("Corrected "+corrected.substring(1,corrected.length()-1));
+				}
+			}
 			
 			System.out.println("Queries and entities returned " + queryEntityMapper.toString());
 			//

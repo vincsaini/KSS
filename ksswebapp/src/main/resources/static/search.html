@@ -171,7 +171,7 @@ $(document).ready(function(){
         		$("#weather_container").html(results_data['weatherResult'])
         		$("#weather_container").css("display","block");
         		//alert(results_data['weatherResult']);
-        } else if(results_data['resultsType'] == 'kss_query_variety'){
+        } else if(results_data['resultsType'] == 'kss_query_variety' || results_data['resultsType'] == 'kss_query_crop_problem'){
         		sample_data = results_data['queryResults'];
 			//alert(sample_data)
 			$("#search_box").css("display","none");
